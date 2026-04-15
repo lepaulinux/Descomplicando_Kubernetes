@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: giropower
+  name: giropower
+spec:
+  containers:
+  - image: ubuntu
+    name: ubuntu
+    args: ["sleep", "1800"]
+
+  - image: nginx
+    name: webserver
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - mountPath: /giropower
+      name: primeiro-emptydir
+    resources:
+      limits:
+        cpu: "1"
+        memory: "128Mi"
+      requests:
+        cpu: "500m"
+        memory: "64Mi"
+
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  volumes:
+  - name: primeiro-emptydir
+    emptyDir:
+      sizeLimit: 256Mi
