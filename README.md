@@ -1,34 +1,70 @@
-🚀 Descomplicando Kubernetes
+# 🚀 Descomplicando Kubernetes
 
-Repositório criado para documentar minha jornada de aprendizado em Kubernetes, utilizando como base o livro Descomplicando Kubernetes.
+Bem-vindo ao meu repositório de estudos sobre Kubernetes! ☸️
 
-📅 Dia 1 — Fundamentos e preparação do ambiente
+Este projeto tem como objetivo documentar minha jornada de aprendizado, explorando desde os conceitos básicos até práticas mais avançadas no ecossistema Kubernetes.
 
-No primeiro dia, foram abordados conceitos iniciais e a preparação do ambiente para trabalhar com Kubernetes.
+---
 
-🔹 Principais tópicos estudados:
-Introdução ao ecossistema de containers
-O que é e para que serve o Kubernetes
-Instalação e configuração de ferramentas essenciais
-Uso do kubectl para interagir com o cluster
-Customização do kubectl para melhorar produtividade
-aliases úteis
-autocomplete no terminal
-organização de contexto
-🛠️ Ferramentas utilizadas:
-Docker
-kubectl
-Kubernetes
-💡 Aprendizados
+## 📚 Sobre
 
-Neste primeiro contato, ficou claro como o Kubernetes atua na orquestração de containers, facilitando a automação, escalabilidade e gerenciamento de aplicações.
+Aqui você encontrará:
 
-A customização do kubectl mostrou-se essencial para aumentar a produtividade no dia a dia, tornando os comandos mais rápidos e práticos.
+* 📦 Conceitos fundamentais do Kubernetes
+* ⚙️ Configurações e manifestos YAML
+* 🧪 Testes práticos em ambiente local (Kind)
+* 📈 Observabilidade (Prometheus, Node Exporter, etc.)
+* 🚀 Deploys e boas práticas
 
-📌 Objetivo
+Este repositório funciona como meu **caderno de estudos prático**, onde organizo exemplos reais e experimentos.
 
-Este repositório tem como objetivo:
+---
 
-Consolidar o aprendizado prático
-Servir como material de consulta futura
-Compartilhar conhecimento com a comunidade
+## 🛠️ Ferramentas utilizadas
+
+* Kubernetes
+* Kind (Kubernetes in Docker)
+* kubectl
+* Docker
+* Nginx
+* Prometheus
+* Node Exporter
+
+---
+
+## 🚧 Em progresso
+
+Este repositório está em constante evolução. Novos conteúdos serão adicionados conforme avanço nos estudos.
+
+---
+
+## 🎯 Objetivo
+
+Consolidar conhecimento em Kubernetes através da prática e documentação, criando um material de referência para revisões futuras.
+
+---
+
+## 🤝 Contribuição
+
+Este é um repositório pessoal de estudos, mas sugestões são sempre bem-vindas!
+
+---
+
+## 📌 Observações
+
+* Ambiente local utilizando **Kind**
+* Não recomendado para produção
+* Foco em aprendizado prático
+
+---
+
+## 📖 Referências
+
+* Documentação oficial do Kubernetes
+* Cursos e materiais diversos da comunidade
+
+---
+
+## 🧠 Autor
+
+Desenvolvido por mim durante meus estudos de Kubernetes 🚀
