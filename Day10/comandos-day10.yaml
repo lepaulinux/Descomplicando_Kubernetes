@@ -1,0 +1,77 @@
+k get ns
+
+kubectl get pods --namespace=kube-system
+k get pods -n kube-system
+
+# para pegar os pods do deafult namespaces
+
+k get pods
+
+# declarative mode
+kubectl apply -f ns.yaml
+k describe ns demo
+kubectl delete ns/demo
+
+# imperative mode
+kubectl create ns demo 
+
+kubectl create deploy nginx-demo --image=nginx -n demo
+
+kubectl get pods -n demo
+
+# deploy no default namespaces
+kubectl create deploy nginx-test --image=nginx 
+
+# acessar o pod em outro namespace
+k exec -it -n demo nginx-demo-5c86c7d69f-6rmr5 -- sh
+
+k get pods -n demo -o wide
+# ip 10.244.1.5
+
+k get pods -o wide
+# ip 10.244.2.5
+
+kubectl scale --replicas=3 deploy/nginx-demo -n demo
+k get pods -n demo
+
+k get pods -n demo -o wide
+# nginx-demo-5c86c7d69f-6rmr5   1/1     Running   0          13m   10.244.1.5   kind-worker    <none>           <none>
+# nginx-demo-5c86c7d69f-hrkvz   1/1     Running   0          32s   10.244.2.6   kind-worker2   <none>           <none>
+# nginx-demo-5c86c7d69f-v79fl   1/1     Running   0          32s   10.244.1.6   kind-worker    <none>           <none>
+
+k exec -it nginx-test-6ff8854996-7jffn -- sh
+
+kubectl scale --replicas=3 deploy/nginx-test
+
+k get pods
+
+# expose port 80 for the pods in the namespace demo
+kubectl expose -n demo deploy/nginx-demo --name=svc-demo --port 80
+
+# don't forget the namespace to se the new service
+k get svc -n demo
+# svc-demo   ClusterIP   10.96.93.125   <none>        80/TCP    77s
+
+# expose port 80 para o default namespace
+k expose deploy/nginx-test --name=svc-test --port 80
+k get svc
+# svc-test       ClusterIP   10.96.247.176   <none>        80/TCP         38s
+
+# testar comunicacao usando name resolution. 
+# acessar pod no default namespace
+k exec -it nginx-test-6ff8854996-2nbh5 -- sh
+curl svc-demo
+#curl: (6) Could not resolve host: svc-demo
+
+cat /etc/resolv.conf
+# search default.svc.cluster.local svc.cluster.local cluster.local
+# nameserver 10.96.0.10
+
+# acesse o pod no demo namespace
+k exec -it -n demo nginx-demo-5c86c7d69f-v79fl -- sh
+# use the full qualified name
+curl svc-test.demo.svc.cluster.local
+
+# acesse o pod no default namespace
+k exec -it nginx-test-6ff8854996-2nbh5 -- sh
+curl svc-demo.demo.svc.cluster.local
